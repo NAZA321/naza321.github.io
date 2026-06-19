@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagPill from '../../components/TagPill.astro';
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...tagCounts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+---
+
+<BaseLayout title="Tags">
+  <h1 class="text-2xl font-bold text-slate-900">Tags</h1>
+  <div class="mt-6 flex flex-wrap gap-3">
+    {tags.map(([tag, count]) => <TagPill href={`/tags/${tag}/`} label={`${tag} (${count})`} />)}
+  </div>
+</BaseLayout>

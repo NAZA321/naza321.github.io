@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif;
+}
