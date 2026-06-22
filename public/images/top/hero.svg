@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" width="1600" height="500" role="img" aria-label="abstract circuit and network background">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1026"/>
+      <stop offset="0.5" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <radialGradient id="glowR" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowI" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#818cf8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#6366f1" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="500" fill="url(#bg)"/>
+  <rect width="1600" height="500" fill="url(#grid)"/>
+
+  <!-- ambient glows (kept to upper/right so lower-left stays dark for the title) -->
+  <circle cx="1250" cy="140" r="260" fill="url(#glowI)"/>
+  <circle cx="980" cy="80" r="200" fill="url(#glowR)"/>
+
+  <!-- circuit traces -->
+  <g fill="none" stroke="#6366f1" stroke-opacity="0.55" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 120 H260 L300 80 H520 L560 120 H820"/>
+    <path d="M1600 200 H1360 L1320 240 H1120 L1080 200 H900"/>
+    <path d="M0 360 H180 L220 400 H460"/>
+    <path d="M1600 380 H1420 L1380 340 H1180"/>
+    <path d="M700 0 V120 L740 160 V300"/>
+    <path d="M1180 500 V360 L1140 320 V200"/>
+    <path d="M980 80 V260 L1020 300 H1240"/>
+  </g>
+
+  <!-- secondary cyan traces -->
+  <g fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M560 120 L600 160 H760"/>
+    <path d="M1320 240 L1280 280 V420"/>
+    <path d="M300 80 V40 H440"/>
+    <path d="M1080 200 L1040 240 H860 L820 280 V420"/>
+  </g>
+
+  <!-- nodes -->
+  <g>
+    <circle cx="820" cy="120" r="6" fill="#818cf8"/>
+    <circle cx="900" cy="200" r="6" fill="#22d3ee"/>
+    <circle cx="700" cy="120" r="5" fill="#a5b4fc"/>
+    <circle cx="980" cy="80" r="7" fill="#22d3ee"/>
+    <circle cx="1240" cy="300" r="6" fill="#818cf8"/>
+    <circle cx="460" cy="400" r="6" fill="#22d3ee"/>
+    <circle cx="1180" cy="200" r="5" fill="#a5b4fc"/>
+    <circle cx="760" cy="160" r="5" fill="#22d3ee"/>
+    <circle cx="440" cy="40" r="5" fill="#818cf8"/>
+    <circle cx="1280" cy="420" r="5" fill="#818cf8"/>
+  </g>
+
+  <!-- chip / processor accent -->
+  <g transform="translate(1120 250)" stroke="#a5b4fc" stroke-opacity="0.8" fill="none" stroke-width="2.5">
+    <rect x="-44" y="-44" width="88" height="88" rx="10" fill="#312e81" fill-opacity="0.6"/>
+    <rect x="-22" y="-22" width="44" height="44" rx="6"/>
+    <g stroke-linecap="round">
+      <path d="M-44 -22 H-64 M-44 0 H-64 M-44 22 H-64"/>
+      <path d="M44 -22 H64 M44 0 H64 M44 22 H64"/>
+      <path d="M-22 -44 V-64 M0 -44 V-64 M22 -44 V-64"/>
+      <path d="M-22 44 V64 M0 44 V64 M22 44 V64"/>
+    </g>
+  </g>
+
+  <!-- concentric radar accent (top-right) -->
+  <g transform="translate(1380 110)" fill="none" stroke="#22d3ee" stroke-opacity="0.35">
+    <circle r="40"/>
+    <circle r="80"/>
+    <circle r="120"/>
+  </g>
+</svg>

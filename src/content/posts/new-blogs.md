@@ -4,7 +4,9 @@ date: 2026-06-20
 description: "ブログを始めました。アプリ開発の記録や日々の学びを、これから少しずつ書いていきます。"
 tags: ["intro"]
 categories: ["blog"]
-# heroImage: "https://picsum.photos/1200/400?random=42"
+heroImage: "/images/blog/circuit-board.svg"
+# heroImage: "/images/blog/data-flow.svg"
+# heroImage: "/images/blog/network-nodes.svg"
 ---
 
 はじめまして、NAZA です。

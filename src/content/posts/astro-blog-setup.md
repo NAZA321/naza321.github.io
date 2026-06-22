@@ -4,7 +4,9 @@ date: 2026-06-21
 description: "このサイトの技術構成について。"
 tags: ["astro", "meta"]
 categories: ["blog"]
-heroImage: ""
+# heroImage: "/images/blog/circuit-board.svg"
+heroImage: "/images/blog/data-flow.svg"
+# heroImage: "/images/blog/network-nodes.svg"
 ---
 
 このサイトは以下の構成で作られています。
