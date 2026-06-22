@@ -4,6 +4,7 @@ date: 2026-06-21
 description: "このサイトの技術構成について。"
 tags: ["astro", "meta"]
 categories: ["blog"]
+heroImage: "https://picsum.photos/1200/400?random=42"
 ---
 
 このサイトは以下の構成で作られています。
@@ -11,6 +12,5 @@ categories: ["blog"]
 - 静的サイトジェネレーター: [Astro](https://astro.build/)
 - 記事: Markdown + Content Collections
 - スタイル: Tailwind CSS
-- デプロイ: GitHub Actions で `master` へのpush時に自動ビルド・公開
 
 タグやカテゴリーで記事を分類できるようにしています。

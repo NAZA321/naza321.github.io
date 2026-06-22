@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  image?: string;
+  titleClass?: string;
+}
+
+import { pickGradient } from '../lib/gradient';
+
+const { title, image, titleClass = 'text-lg' } = Astro.props;
+---
+
+{
+  image ? (
+    <img src={image} alt={title} class="h-full w-full object-cover" />
+  ) : (
+    <div
+      class:list={[
+        'flex h-full w-full items-center justify-center bg-gradient-to-br p-6 text-center',
+        pickGradient(title),
+      ]}
+    >
+      <p class:list={['font-bold text-white drop-shadow-sm [text-wrap:balance]', titleClass]}>
+        {title}
+      </p>
+    </div>
+  )
+}

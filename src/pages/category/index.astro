@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TagPill from '../../components/TagPill.astro';
+import TaxonomyCard from '../../components/TaxonomyCard.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 const categoryCounts = new Map<string, number>();
@@ -13,12 +13,13 @@ for (const post of posts) {
 const categories = [...categoryCounts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
 ---
 
-<BaseLayout title="Categories">
-  <h1 class="text-2xl font-bold text-slate-900">Categories</h1>
-  <div class="mt-6 flex flex-wrap gap-3">
+<BaseLayout title="Categories" wide>
+  <h1 class="mb-2 text-2xl font-bold tracking-tight text-slate-900">Categories</h1>
+  <p class="mb-8 text-slate-500">{categories.length} 個のカテゴリー</p>
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
       categories.map(([category, count]) => (
-        <TagPill href={`/category/${category}/`} label={`${category} (${count})`} />
+        <TaxonomyCard href={`/category/${category}/`} name={category} count={count} />
       ))
     }
   </div>

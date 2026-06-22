@@ -2,16 +2,37 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import NewsList from '../components/NewsList.astro';
+
+// プレースホルダー画像。本番画像に差し替える場合は public/ に画像ファイルを置き、
+// このパスを例えば '/hero.jpg' に変更する。
+const heroImage = 'https://picsum.photos/seed/naza321-home/1600/500';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
+  .slice(0, 6);
+
+const newsEntries = await getCollection('news');
+const newsItems = newsEntries[0]?.data.items ?? [];
 ---
 
-<BaseLayout title="naza321">
-  <h1 class="text-2xl font-bold text-slate-900">最近の記事</h1>
-  <div class="mt-6">
+<BaseLayout title="nazaのブログ" wide>
+  <div class="relative mb-12 aspect-[16/9] overflow-hidden rounded-2xl sm:aspect-[3/1]">
+    <img src={heroImage} alt="naza" class="h-full w-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+    <div class="absolute inset-0 flex flex-col items-start justify-end p-6 md:p-10">
+      <h1 class="text-3xl font-bold tracking-tight text-white md:text-4xl">NAZA</h1>
+      <p class="mt-2 text-white/80">日々の記録や学びを書いていくブログです。</p>
+    </div>
+  </div>
+
+  {newsItems.length > 0 && <NewsList items={newsItems} />}
+
+  <h2 class="mb-6 text-xl font-bold tracking-tight text-slate-900">最近の記事</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {posts.map((entry) => <PostCard entry={entry} />)}
   </div>
-  <a href="/posts/" class="mt-6 inline-block text-slate-600 hover:underline">すべての記事を見る →</a>
+  <a href="/posts/" class="mt-8 inline-block font-medium text-indigo-600 hover:text-indigo-700">
+    すべての記事を見る →
+  </a>
 </BaseLayout>

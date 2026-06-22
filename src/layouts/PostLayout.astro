@@ -2,6 +2,8 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import TagPill from '../components/TagPill.astro';
+import PostCover from '../components/PostCover.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
 
 interface Props {
   entry: CollectionEntry<'posts'>;
@@ -18,8 +20,11 @@ const formattedDate = date.toLocaleDateString('ja-JP', {
 
 <BaseLayout title={title} description={description}>
   <article>
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold text-slate-900">{title}</h1>
+    <div class="aspect-[3/1] overflow-hidden rounded-2xl">
+      <PostCover title={title} image={heroImage} titleClass="text-2xl md:text-3xl px-6" />
+    </div>
+    <header class="mt-6 mb-8">
+      <h1 class="text-3xl font-bold tracking-tight text-slate-900">{title}</h1>
       <p class="mt-2 text-sm text-slate-400">{formattedDate}</p>
       <div class="mt-3 flex flex-wrap gap-2">
         {categories.map((category) => (
@@ -29,10 +34,10 @@ const formattedDate = date.toLocaleDateString('ja-JP', {
           <TagPill href={`/tags/${tag}/`} label={`#${tag}`} />
         ))}
       </div>
-      {heroImage && <img src={heroImage} alt={title} class="mt-6 w-full rounded-lg" />}
     </header>
-    <div class="prose prose-slate max-w-none">
+    <div class="prose prose-slate max-w-none prose-a:text-indigo-600">
       <slot />
     </div>
   </article>
+  <RelatedPosts current={entry} />
 </BaseLayout>

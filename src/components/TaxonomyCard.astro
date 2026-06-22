@@ -1,0 +1,34 @@
+---
+import { pickGradient } from '../lib/gradient';
+
+interface Props {
+  href: string;
+  name: string;
+  count: number;
+  /** アイコンに表示する記号。タグは "#"、カテゴリーは名前の頭文字など。 */
+  symbol?: string;
+}
+
+const { href, name, count, symbol } = Astro.props;
+const icon = symbol ?? name.charAt(0).toUpperCase();
+---
+
+<a
+  href={href}
+  class="group flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md"
+>
+  <span
+    class:list={[
+      'flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br text-lg font-bold text-white shadow-sm',
+      pickGradient(name),
+    ]}
+  >
+    {icon}
+  </span>
+  <span class="min-w-0">
+    <span class="block truncate font-bold text-slate-900 group-hover:text-indigo-600">
+      {name}
+    </span>
+    <span class="block text-sm text-slate-400">{count} posts</span>
+  </span>
+</a>

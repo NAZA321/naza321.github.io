@@ -15,4 +15,18 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// 単一ファイル(src/content/news/news.md)のfrontmatterに項目を配列で持たせて管理する。
+const news = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/news' }),
+  schema: z.object({
+    items: z.array(
+      z.object({
+        date: z.coerce.date(),
+        text: z.string(),
+        link: z.string().optional(),
+      }),
+    ),
+  }),
+});
+
+export const collections = { posts, news };
