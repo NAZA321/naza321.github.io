@@ -4,7 +4,7 @@ date: 2026-06-21
 description: "このサイトの技術構成について。"
 tags: ["astro", "meta"]
 categories: ["blog"]
-heroImage: "https://picsum.photos/1200/400?random=42"
+heroImage: ""
 ---
 
 このサイトは以下の構成で作られています。
